@@ -1,0 +1,499 @@
+[
+ {
+  "id": "e1",
+  "name": "TLD GPU",
+  "category": "Ground Power Unit",
+  "description": "Mobile ground power unit supplying electrical power to parked aircraft.",
+  "cover": null,
+  "docs": [],
+  "tasks": [
+   {
+    "id": "k1",
+    "name": "Engine Oil & Filter Change",
+    "interval": "Every 250 hrs",
+    "duration": "90 min",
+    "description": "Drain the engine oil and replace the oil filter. Sample data: verify against the OEM manual.",
+    "tools": [
+     {
+      "id": "a1",
+      "name": "Socket & ratchet set",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "a2",
+      "name": "Oil filter wrench",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "a3",
+      "name": "Drain pan",
+      "qty": 1,
+      "pn": "20 L",
+      "img": null
+     },
+     {
+      "id": "a4",
+      "name": "Funnel",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "a5",
+      "name": "Nitrile gloves",
+      "qty": 1,
+      "pn": "Pair",
+      "img": null
+     },
+     {
+      "id": "a6",
+      "name": "Lint-free cloths",
+      "qty": 3,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "a7",
+      "name": "Torque wrench",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     }
+    ],
+    "steps": [
+     {
+      "id": "b1",
+      "title": "Prepare and isolate",
+      "text": "Park on level ground, apply the parking brake, shut down the engine and remove the key. Let the engine cool. Disconnect the battery negative terminal.",
+      "warning": "Make sure no output cable is connected to an aircraft.",
+      "tools": [],
+      "media": []
+     },
+     {
+      "id": "b2",
+      "title": "Drain the oil",
+      "text": "Place the drain pan under the sump. Remove the drain plug and let the oil drain completely.",
+      "warning": "Oil may still be hot. Wear gloves.",
+      "tools": [
+       "a1",
+       "a3",
+       "a5"
+      ],
+      "media": []
+     },
+     {
+      "id": "b3",
+      "title": "Remove the old filter",
+      "text": "Unscrew the old oil filter with the filter wrench. Wipe the filter mounting face clean.",
+      "warning": "",
+      "tools": [
+       "a2",
+       "a6",
+       "a5"
+      ],
+      "media": []
+     },
+     {
+      "id": "b4",
+      "title": "Fit the new filter",
+      "text": "Lightly oil the new filter gasket. Screw on by hand until the gasket touches, then tighten as printed on the filter.",
+      "warning": "",
+      "tools": [
+       "a5",
+       "a6"
+      ],
+      "media": []
+     },
+     {
+      "id": "b5",
+      "title": "Refit the drain plug",
+      "text": "Fit a new sealing washer. Tighten the drain plug to the torque in the manual.",
+      "warning": "",
+      "tools": [
+       "a1",
+       "a7"
+      ],
+      "media": []
+     },
+     {
+      "id": "b6",
+      "title": "Refill with oil",
+      "text": "Add new oil through the filler with the funnel. Check the dipstick and stop at the FULL mark.",
+      "warning": "",
+      "tools": [
+       "a4",
+       "a6"
+      ],
+      "media": []
+     },
+     {
+      "id": "b7",
+      "title": "Run and check for leaks",
+      "text": "Reconnect the battery and start the engine for 2 minutes. Look for leaks, shut down, recheck the level and record the job in the log.",
+      "warning": "",
+      "tools": [
+       "a6"
+      ],
+      "media": []
+     }
+    ]
+   },
+   {
+    "id": "k2",
+    "name": "Periodic Inspection",
+    "interval": "Monthly",
+    "duration": "45 min",
+    "description": "General condition check of the ground power unit and output cables.",
+    "tools": [
+     {
+      "id": "c1",
+      "name": "Flashlight",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "c2",
+      "name": "Digital multimeter",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "c3",
+      "name": "Screwdriver set",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "c4",
+      "name": "Lint-free cloths",
+      "qty": 3,
+      "pn": "",
+      "img": null
+     }
+    ],
+    "steps": [
+     {
+      "id": "d1",
+      "title": "Walk-around inspection",
+      "text": "Check the body, doors, tyres, tow bar and lights for damage or leaks.",
+      "warning": "",
+      "tools": [
+       "c1"
+      ],
+      "media": []
+     },
+     {
+      "id": "d2",
+      "title": "Check fluids",
+      "text": "Check engine oil, coolant and fuel levels. Top up if needed.",
+      "warning": "",
+      "tools": [
+       "c4"
+      ],
+      "media": []
+     },
+     {
+      "id": "d3",
+      "title": "Inspect output cables",
+      "text": "Check cable insulation and connector pins for cuts, burns or corrosion. Tighten loose covers.",
+      "warning": "Never inspect cables while the unit is running.",
+      "tools": [
+       "c1",
+       "c3"
+      ],
+      "media": []
+     },
+     {
+      "id": "d4",
+      "title": "Check battery and voltage",
+      "text": "Check the battery terminals. Measure the battery voltage and the output voltage at idle.",
+      "warning": "",
+      "tools": [
+       "c2"
+      ],
+      "media": []
+     },
+     {
+      "id": "d5",
+      "title": "Function test and log",
+      "text": "Run a no-load test, confirm normal readings and record the inspection.",
+      "warning": "",
+      "tools": [
+       "c2"
+      ],
+      "media": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "e2",
+  "name": "HYD RIG AHT 95M",
+  "category": "Hydraulic Test Rig",
+  "description": "Mobile hydraulic rig used to service and test aircraft hydraulic systems.",
+  "cover": null,
+  "docs": [],
+  "tasks": [
+   {
+    "id": "k3",
+    "name": "Hydraulic Filter Element Replacement",
+    "interval": "Every 500 hrs or on indicator",
+    "duration": "120 min",
+    "description": "Replace the pressure filter element and seals. Sample data: verify against the OEM manual.",
+    "tools": [
+     {
+      "id": "e1",
+      "name": "Open-end wrench set",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "e2",
+      "name": "Torque wrench",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "e3",
+      "name": "Drain container",
+      "qty": 1,
+      "pn": "10 L",
+      "img": null
+     },
+     {
+      "id": "e4",
+      "name": "Safety glasses",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "e5",
+      "name": "Nitrile gloves",
+      "qty": 1,
+      "pn": "Pair",
+      "img": null
+     },
+     {
+      "id": "e6",
+      "name": "Lint-free cloths",
+      "qty": 3,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "e7",
+      "name": "Filter element and O-ring kit",
+      "qty": 1,
+      "pn": "OEM",
+      "img": null
+     }
+    ],
+    "steps": [
+     {
+      "id": "f1",
+      "title": "Shut down and depressurise",
+      "text": "Stop the pump, release the system pressure and confirm the gauge reads zero.",
+      "warning": "Hydraulic fluid under pressure can penetrate skin. Wear glasses and gloves.",
+      "tools": [
+       "e4",
+       "e5"
+      ],
+      "media": []
+     },
+     {
+      "id": "f2",
+      "title": "Drain the filter bowl",
+      "text": "Place the container under the filter housing. Open the drain and let the fluid drain.",
+      "warning": "",
+      "tools": [
+       "e3",
+       "e1",
+       "e6"
+      ],
+      "media": []
+     },
+     {
+      "id": "f3",
+      "title": "Remove the old element",
+      "text": "Unscrew the bowl and remove the element. Check the element for metal particles and note anything unusual.",
+      "warning": "",
+      "tools": [
+       "e1",
+       "e5"
+      ],
+      "media": []
+     },
+     {
+      "id": "f4",
+      "title": "Clean the housing",
+      "text": "Wipe the bowl and housing with a clean cloth. Do not use fluffy rags.",
+      "warning": "",
+      "tools": [
+       "e6"
+      ],
+      "media": []
+     },
+     {
+      "id": "f5",
+      "title": "Install the new element",
+      "text": "Lubricate the new O-rings with clean hydraulic fluid and fit the new element.",
+      "warning": "",
+      "tools": [
+       "e7",
+       "e5"
+      ],
+      "media": []
+     },
+     {
+      "id": "f6",
+      "title": "Refit the bowl",
+      "text": "Screw the bowl back on and tighten to the specified torque.",
+      "warning": "",
+      "tools": [
+       "e1",
+       "e2"
+      ],
+      "media": []
+     },
+     {
+      "id": "f7",
+      "title": "Fill, bleed and leak test",
+      "text": "Top up the reservoir, run the pump at low pressure, bleed air, then check for leaks at full pressure. Record the job.",
+      "warning": "",
+      "tools": [
+       "e6"
+      ],
+      "media": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "e3",
+  "name": "AIR COMPRESSOR (PORTABLE)",
+  "category": "Compressed Air",
+  "description": "Portable air compressor for tyre inflation and workshop air supply on the apron.",
+  "cover": null,
+  "docs": [],
+  "tasks": [
+   {
+    "id": "k4",
+    "name": "Intake Air Filter Replacement",
+    "interval": "Every 200 hrs",
+    "duration": "40 min",
+    "description": "Replace the compressor intake air filter. Sample data: verify against the OEM manual.",
+    "tools": [
+     {
+      "id": "g1",
+      "name": "Screwdriver set",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "g2",
+      "name": "Wrench set",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "g3",
+      "name": "Soft brush",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "g4",
+      "name": "Safety glasses",
+      "qty": 1,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "g5",
+      "name": "Lint-free cloths",
+      "qty": 2,
+      "pn": "",
+      "img": null
+     },
+     {
+      "id": "g6",
+      "name": "Replacement air filter",
+      "qty": 1,
+      "pn": "OEM",
+      "img": null
+     }
+    ],
+    "steps": [
+     {
+      "id": "h1",
+      "title": "Shut down and make safe",
+      "text": "Stop the compressor, release the air pressure and disconnect the battery or power.",
+      "warning": "Do not open the filter housing while the unit is pressurised.",
+      "tools": [
+       "g4"
+      ],
+      "media": []
+     },
+     {
+      "id": "h2",
+      "title": "Open the filter housing",
+      "text": "Release the clips or screws and remove the housing cover.",
+      "warning": "",
+      "tools": [
+       "g1",
+       "g2"
+      ],
+      "media": []
+     },
+     {
+      "id": "h3",
+      "title": "Remove the old filter",
+      "text": "Take out the old filter and check it for oil or damage.",
+      "warning": "",
+      "tools": [
+       "g5"
+      ],
+      "media": []
+     },
+     {
+      "id": "h4",
+      "title": "Clean the housing",
+      "text": "Brush and wipe the housing and seat. Keep dirt out of the intake.",
+      "warning": "",
+      "tools": [
+       "g3",
+       "g5"
+      ],
+      "media": []
+     },
+     {
+      "id": "h5",
+      "title": "Fit the new filter and close",
+      "text": "Fit the new filter, refit the cover and tighten. Start the unit, check for air leaks and record the job.",
+      "warning": "",
+      "tools": [
+       "g6",
+       "g1"
+      ],
+      "media": []
+     }
+    ]
+   }
+  ]
+ }
+]
