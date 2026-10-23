@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aircraft Support Equipment</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7c600'/%3E%3Cpath d='M5 26 16 6l11 20h-6l-5-10-5 10z' fill='%230b0f14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#e3e5e1;--card:#f5f6f3;--ink:#0c1a29;--mute:#5b6773;--line:#c8ccc6;--y:#f7c600;--blk:#0b0f14;--ok:#17803d;--bad:#c62d22;--tb:#1f2a33}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;margin:0;line-height:1.1}
+a{color:inherit}
+header{background:var(--blk);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.sign{background:var(--y);color:var(--blk);font:700 1.45rem "Barlow Condensed",sans-serif;letter-spacing:.04em;padding:4px 16px;border-radius:4px;text-decoration:none;text-transform:uppercase;white-space:nowrap}
+header span{color:#9aa7b3;font-size:.85rem}
+.haz{height:9px;background:repeating-linear-gradient(-45deg,var(--y) 0 14px,var(--blk) 14px 28px)}
+main{max-width:1080px;margin:0 auto;padding:22px 18px 70px}
+.crumbs{font-size:.85rem;color:var(--mute);margin-bottom:14px}.crumbs a{text-decoration:none;border-bottom:1px solid var(--line)}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--y);color:var(--blk);border:2px solid var(--blk);border-radius:6px;padding:8px 16px;font-weight:600}
+.btn:hover{background:var(--blk);color:var(--y)}
+.btn.ghost{background:transparent;color:var(--ink)}.btn.ghost:hover{background:var(--blk);color:#fff}
+.btn.danger{border-color:var(--bad);color:var(--bad)}.btn.danger:hover{background:var(--bad);color:#fff}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.btn.big{padding:12px 26px;font-size:1.05rem}
+:focus-visible{outline:3px solid var(--blk);outline-offset:2px}
+.ib{border:1px solid var(--line);background:var(--card);border-radius:5px;width:32px;height:32px;line-height:1}.ib:hover{background:var(--y)}
+.bar{display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.bar input{flex:1;min-width:200px;padding:10px 14px;border:2px solid var(--blk);border-radius:6px;background:var(--card);font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.eq{background:var(--card);border:2px solid var(--blk);border-radius:8px;overflow:hidden;text-decoration:none;display:block;transition:transform .15s}
+.eq:hover{transform:translateY(-3px)}
+.eq .cv{height:170px}.eq .in{padding:14px 16px 16px}
+.eq h2{font-size:1.5rem;margin:6px 0 4px}
+.cv img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{height:100%;display:grid;place-items:center;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/22px 22px,#d9dcd6}
+.ph b{font:700 3.4rem "Barlow Condensed",sans-serif;color:var(--blk);background:var(--y);padding:0 18px;border-radius:4px;letter-spacing:.05em}
+.tag{display:inline-block;background:var(--blk);color:var(--y);font-size:.75rem;font-weight:600;padding:1px 10px;border-radius:3px}
+.hint{color:var(--mute);font-size:.88rem}
+.hero{display:grid;grid-template-columns:minmax(240px,380px) 1fr;gap:26px;align-items:center;margin-bottom:26px}
+.hero .cv{border:2px solid var(--blk);border-radius:8px;overflow:hidden;height:250px}
+.hero h1{font-size:2.7rem;margin:8px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:30px 0 12px;padding-bottom:8px;border-bottom:3px solid var(--blk)}
+.sec h2{font-size:1.7rem}
+.list{display:grid;gap:10px}
+.task{background:var(--card);border:2px solid var(--blk);border-left:10px solid var(--y);border-radius:6px;padding:12px 16px;text-decoration:none;display:grid;gap:2px}
+.task:hover{background:#fff}.task b{font-size:1.1rem}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.tl{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.tl .cv{height:100px}.tl .in{padding:10px 12px}
+.tl .ph b{font-size:1.5rem;padding:0 10px}
+.tl .acts{display:flex;gap:6px;padding:0 12px 12px}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--mute)}
+.step{display:grid;grid-template-columns:50px 1fr auto;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px}
+.no{background:var(--y);border:2px solid var(--blk);width:46px;height:46px;border-radius:6px;display:grid;place-items:center;font:700 1.6rem "Barlow Condensed",sans-serif}
+.step h3{font-size:1.35rem}.step p{margin:6px 0;white-space:pre-line}
+.acts{display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap;justify-content:flex-end}
+.warn{background:#fff3c4;border-left:6px solid var(--y);padding:8px 12px;margin:8px 0;font-size:.92rem}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:.82rem}
+.chip button{border:0;background:none;color:var(--bad);font-weight:700;padding:0 0 0 4px}
+.media{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.media img{max-height:170px;border-radius:6px;border:1px solid var(--line);display:block}
+.media video{width:300px;max-width:100%;border-radius:6px;background:#000}
+.doc{border:2px solid var(--blk);border-radius:6px;padding:6px 14px;text-decoration:none;background:var(--card);font-weight:500}
+.doc:hover{background:var(--y)}
+.empty{border:2px dashed var(--line);border-radius:8px;padding:22px;text-align:center;color:var(--mute)}
+dialog{border:3px solid var(--blk);border-radius:10px;padding:0;width:min(560px,94vw);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(11,15,20,.6)}
+dialog form{padding:20px}
+dialog h3{font-size:1.7rem;margin-bottom:8px;padding-bottom:8px;border-bottom:3px solid var(--y)}
+dialog label{display:block;font-weight:600;margin:12px 0 4px;font-size:.88rem}
+dialog input[type=text],dialog input[type=number],dialog textarea{width:100%;padding:8px 10px;border:2px solid var(--blk);border-radius:6px;font:inherit;background:#fff}
+dialog .ck{font-weight:400;display:flex;gap:8px;margin:2px 0}
+.checks{max-height:150px;overflow:auto;border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:#fff}
+.run{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.pan{background:var(--card);border:2px solid var(--blk);border-radius:8px;padding:20px}
+.pan h2{font-size:2rem;margin:4px 0 8px}
+.pb{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:14px}.pb i{display:block;height:100%;background:var(--y);border-right:2px solid var(--blk)}
+.table{background:var(--tb);border:8px solid var(--blk);border-radius:10px;padding:14px;position:sticky;top:12px}
+.table .cap{color:#9fb0bd;font-size:.8rem;margin-bottom:10px}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px}
+.tile{background:transparent;color:#d6dfe6;border:2px dashed #61727e;border-radius:8px;min-height:92px;padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:2px;font-size:.88rem}
+.tile small{color:#9fb0bd}
+.tile.ok{border:2px solid #3fd07f;background:rgba(63,208,127,.18)}
+.tile.use{border:2px solid var(--y);background:rgba(247,198,0,.16)}
+.tile.miss{border:2px solid #ff6b5e;background:rgba(255,107,94,.2)}
+.tile.need{box-shadow:0 0 0 3px var(--y)}
+.al{background:var(--bad);color:#fff;padding:10px 14px;border-radius:6px;font-weight:600;margin:10px 0}.al.good{background:var(--ok)}
+@media(max-width:760px){.hero,.run{grid-template-columns:1fr}.step{grid-template-columns:44px 1fr}.step .acts{grid-column:1/-1;justify-content:flex-start}.table{position:static}header span{display:none}.hero h1{font-size:2.1rem}}
+@media(prefers-reduced-motion:reduce){.eq{transition:none}}
+</style>
+</head>
+<body>
+<header><a class="sign" href="#/">Aircraft Support Equipment</a><span>Maintenance guide station</span></header>
+<div class="haz"></div>
+<main id="app"></main>
+<script>
+const app=document.getElementById("app");
+let DATA=[],R=null,KEY=sessionStorage.getItem("key")||"";
+const uid=()=>Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const find=id=>DATA.find(e=>e.id==id);
+const ctx=()=>{const p=location.hash.split("/").slice(1),e=find(p[1]);return{e,t:e&&e.tasks.find(x=>x.id==p[3])}};
+async function api(url,opt={}){
+ opt.headers={...(opt.headers||{}),"X-Key":KEY};
+ const r=await fetch(url,opt);
+ if(r.status==401){KEY=prompt("Admin password")||"";sessionStorage.setItem("key",KEY);if(KEY)return api(url,opt)}
+ if(!r.ok)throw new Error(await r.text());
+ return r.json();
+}
+const load=async()=>{DATA=await api("/api/equipment")};
+async function persist(e,go){
+ try{await api("/api/equipment/"+e.id,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(e)})}catch(x){alert("Save failed: "+x.message)}
+ await load();if(go)location.hash="#/e/"+e.id;route();
+}
+async function upload(f){const fd=new FormData();fd.append("file",f);return api("/api/media",{method:"POST",body:fd})}
+
+/* ---------- dialog form ---------- */
+function modal(title,fields,vals,onSave){
+ const d=document.createElement("dialog"),M={};
+ const body=fields.map(f=>{
+  const v=vals[f.k];
+  if(f.t=="media"||f.t=="medias"){M[f.k]=f.t=="media"?(v?[v]:[]):[...(v||[])];return `<label>${f.l}</label><div class="mf" data-k="${f.k}"><div class="chips"></div><input type="file" ${f.t=="medias"?"multiple":""} accept="${f.acc||""}"></div>`}
+  if(f.t=="checks")return `<label>${f.l}</label><div class="checks">${f.opts.map(o=>`<label class="ck"><input type="checkbox" name="${f.k}" value="${o.id}" ${(v||[]).includes(o.id)?"checked":""}> ${esc(o.name)}</label>`).join("")||'<span class="hint">Add tools to the task first.</span>'}</div>`;
+  if(f.t=="area")return `<label>${f.l}</label><textarea name="${f.k}" rows="3">${esc(v)}</textarea>`;
+  return `<label>${f.l}</label><input name="${f.k}" type="${f.t=="num"?"number":"text"}" value="${esc(v)}" ${f.req?"required":""}>`;
+ }).join("");
+ d.innerHTML=`<form method="dialog"><h3>${title}</h3>${body}<div class="row"><button class="btn" value="ok">Save</button><button class="btn ghost" value="x" formnovalidate>Cancel</button></div></form>`;
+ document.body.appendChild(d);
+ const draw=()=>d.querySelectorAll(".mf").forEach(w=>{const k=w.dataset.k;w.querySelector(".chips").innerHTML=M[k].map((m,i)=>`<span class="chip">${esc(m.name)}<button type="button" data-k="${k}" data-i="${i}" aria-label="Remove">×</button></span>`).join("")});
+ draw();
+ d.addEventListener("click",e=>{const b=e.target.closest(".chip button");if(b){M[b.dataset.k].splice(+b.dataset.i,1);draw()}});
+ d.addEventListener("change",async e=>{
+  if(e.target.type!="file")return;
+  const k=e.target.closest(".mf").dataset.k,fl=fields.find(f=>f.k==k);
+  for(const f of e.target.files){try{const m=await upload(f);if(fl.t=="media")M[k]=[m];else M[k].push(m)}catch(x){alert("Upload failed: "+x.message)}}
+  e.target.value="";draw();
+ });
+ d.addEventListener("close",()=>{
+  if(d.returnValue=="ok"){
+   const fd=new FormData(d.querySelector("form")),o={};
+   fields.forEach(f=>{o[f.k]=f.t=="media"?(M[f.k][0]||null):f.t=="medias"?M[f.k]:f.t=="checks"?fd.getAll(f.k):f.t=="num"?(+fd.get(f.k)||0):fd.get(f.k)});
+   onSave(o);
+  }
+  d.remove();
+ });
+ d.showModal();
+}
+const IMG="image/*",DOC="application/pdf,image/*,video/*,.doc,.docx,.xls,.xlsx,.txt";
+const EF=[{k:"name",l:"Equipment name",t:"text",req:1},{k:"category",l:"Category",t:"text"},{k:"description",l:"Description",t:"area"},{k:"cover",l:"Photo",t:"media",acc:IMG},{k:"docs",l:"Documents and videos (manuals, drawings, PDF)",t:"medias",acc:DOC}];
+const TF=[{k:"name",l:"Task name",t:"text",req:1},{k:"interval",l:"Interval",t:"text"},{k:"duration",l:"Estimated time",t:"text"},{k:"description",l:"Description",t:"area"}];
+const OF=[{k:"name",l:"Tool name",t:"text",req:1},{k:"qty",l:"Quantity",t:"num"},{k:"pn",l:"Part number / size",t:"text"},{k:"img",l:"Photo",t:"media",acc:IMG}];
+const sf=t=>[{k:"title",l:"Step title",t:"text",req:1},{k:"text",l:"Instructions",t:"area"},{k:"warning",l:"Caution (optional)",t:"area"},{k:"tools",l:"Tools needed in this step",t:"checks",opts:t.tools},{k:"media",l:"Photos, videos and documents",t:"medias",acc:DOC}];
+
+/* ---------- actions ---------- */
+const mut=fn=>id=>{const{e,t}=ctx();fn(e,t,id)};
+const A={
+ addE:()=>modal("Add equipment",EF,{},o=>persist({id:uid(),tasks:[],...o},true)),
+ editE:mut(e=>modal("Edit equipment",EF,e,o=>persist({...e,...o}))),
+ delE:mut(async e=>{if(confirm(`Delete ${e.name} and all its tasks?`)){await api("/api/equipment/"+e.id,{method:"DELETE"});await load();location.hash="#/"}}),
+ addT:mut(e=>modal("Add task",TF,{},o=>{e.tasks.push({id:uid(),tools:[],steps:[],...o});persist(e)})),
+ editT:mut((e,t)=>modal("Edit task",TF,t,o=>{Object.assign(t,o);persist(e)})),
+ delT:mut((e,t)=>{if(confirm(`Delete task "${t.name}"?`)){e.tasks=e.tasks.filter(x=>x!=t);persist(e);location.hash="#/e/"+e.id}}),
+ addO:mut((e,t)=>modal("Add tool",OF,{qty:1},o=>{t.tools.push({id:uid(),...o});persist(e)})),
+ editO:mut((e,t,id)=>{const x=t.tools.find(y=>y.id==id);modal("Edit tool",OF,x,o=>{Object.assign(x,o);persist(e)})}),
+ delO:mut((e,t,id)=>{if(confirm("Delete this tool?")){t.tools=t.tools.filter(y=>y.id!=id);t.steps.forEach(s=>s.tools=(s.tools||[]).filter(i=>i!=id));persist(e)}}),
+ addS:mut((e,t)=>modal("Add step",sf(t),{},o=>{t.steps.push({id:uid(),...o});persist(e)})),
+ editS:mut((e,t,id)=>{const x=t.steps.find(y=>y.id==id);modal("Edit step",sf(t),x,o=>{Object.assign(x,o);persist(e)})}),
+ delS:mut((e,t,id)=>{if(confirm("Delete this step?")){t.steps=t.steps.filter(y=>y.id!=id);persist(e)}}),
+ up:mut((e,t,id)=>mv(e,t,id,-1)),down:mut((e,t,id)=>mv(e,t,id,1)),
+ tog:id=>{R.placed[id]=!R.placed[id];route()},
+ begin:()=>{R.i=0;route()},prev:()=>{R.i--;route()},next:()=>{R.i++;route()},
+ restart:()=>{R=null;route()}
+};
+function mv(e,t,id,d){const i=t.steps.findIndex(s=>s.id==id),j=i+d;if(j<0||j>=t.steps.length)return;[t.steps[i],t.steps[j]]=[t.steps[j],t.steps[i]];persist(e)}
+app.addEventListener("click",ev=>{const b=ev.target.closest("[data-a]");if(b){ev.preventDefault();A[b.dataset.a](b.dataset.id)}});
+
+/* ---------- views ---------- */
+const mediaEl=m=>{const u="/media/"+m.id,t=m.mime||"";return t.startsWith("image/")?`<a href="${u}" target="_blank"><img src="${u}" alt="${esc(m.name)}"></a>`:t.startsWith("video/")?`<video src="${u}" controls preload="metadata"></video>`:`<a class="doc" href="${u}" target="_blank">${esc(m.name)}</a>`};
+const ph=n=>`<div class="ph"><b>${esc(String(n).trim().split(/\s+/)[0].slice(0,4).toUpperCase())}</b></div>`;
+const cov=(m,n)=>m?`<img src="/media/${m.id}" alt="${esc(n)}">`:ph(n);
+const empty=s=>`<div class="empty">${s}</div>`;
+const crumbs=(...p)=>`<nav class="crumbs"><a href="#/">Equipment</a>${p.map(x=>` / ${x}`).join("")}</nav>`;
+
+function homeV(){
+ app.innerHTML=`<div class="bar"><input id="q" placeholder="Search equipment" aria-label="Search equipment"><button class="btn" data-a="addE">+ Add equipment</button></div>
+ <div class="grid">${DATA.map(e=>`<a class="eq" href="#/e/${e.id}" data-n="${esc((e.name+" "+e.category).toLowerCase())}"><div class="cv">${cov(e.cover,e.name)}</div><div class="in"><span class="tag">${esc(e.category)}</span><h2>${esc(e.name)}</h2><div class="hint">${e.tasks.length} maintenance task${e.tasks.length==1?"":"s"}</div></div></a>`).join("")||empty("No equipment yet. Add your first one.")}</div>`;
+ document.getElementById("q").oninput=ev=>app.querySelectorAll(".eq").forEach(c=>c.style.display=c.dataset.n.includes(ev.target.value.toLowerCase())?"":"none");
+}
+function eqV(e){
+ app.innerHTML=`${crumbs(esc(e.name))}
+ <section class="hero"><div class="cv">${cov(e.cover,e.name)}</div><div><span class="tag">${esc(e.category)}</span><h1>${esc(e.name)}</h1><p>${esc(e.description)}</p><div class="row"><button class="btn" data-a="editE">Edit equipment</button><button class="btn danger" data-a="delE">Delete</button></div></div></section>
+ <div class="sec"><h2>Maintenance tasks</h2><button class="btn" data-a="addT">+ Add task</button></div>
+ <div class="list">${e.tasks.map(t=>`<a class="task" href="#/e/${e.id}/t/${t.id}"><b>${esc(t.name)}</b><span>${esc(t.interval)}${t.duration?" · "+esc(t.duration):""}</span><span class="hint">${t.tools.length} tools · ${t.steps.length} steps</span></a>`).join("")||empty("No maintenance tasks yet.")}</div>
+ <div class="sec"><h2>Documents and videos</h2></div><div class="media">${(e.docs||[]).map(mediaEl).join("")||'<span class="hint">None attached. Use Edit equipment to add manuals, drawings, PDF files or videos.</span>'}</div>`;
+}
+function taskV(e,t){
+ const st=(s,i)=>`<article class="step"><div class="no">${i+1}</div><div><h3>${esc(s.title)}</h3>${s.text?`<p>${esc(s.text)}</p>`:""}${s.warning?`<div class="warn"><b>Caution:</b> ${esc(s.warning)}</div>`:""}${(s.tools||[]).length?`<div class="chips">${s.tools.map(id=>{const x=t.tools.find(y=>y.id==id);return x?`<span class="chip">${esc(x.name)}</span>`:""}).join("")}</div>`:""}<div class="media">${(s.media||[]).map(mediaEl).join("")}</div></div>
+ <div class="acts"><button class="ib" data-a="up" data-id="${s.id}" title="Move up" aria-label="Move up">↑</button><button class="ib" data-a="down" data-id="${s.id}" title="Move down" aria-label="Move down">↓</button><button class="btn ghost" data-a="editS" data-id="${s.id}">Edit</button><button class="btn danger" data-a="delS" data-id="${s.id}">Delete</button></div></article>`;
+ app.innerHTML=`${crumbs(`<a href="#/e/${e.id}">${esc(e.name)}</a>`,esc(t.name))}
+ <section><span class="tag">${esc(e.name)}</span><h1 style="font-size:2.6rem;margin:8px 0">${esc(t.name)}</h1><p>${esc(t.description)}</p><div class="hint">${esc(t.interval)}${t.duration?" · "+esc(t.duration):""}</div>
+ <div class="row"><a class="btn big" href="#/e/${e.id}/t/${t.id}/run" style="text-decoration:none">Start guided maintenance</a><button class="btn" data-a="editT">Edit task</button><button class="btn danger" data-a="delT">Delete task</button></div></section>
+ <div class="sec"><h2>Tools required</h2><button class="btn" data-a="addO">+ Add tool</button></div>
+ <div class="tools">${t.tools.map(x=>`<div class="tl"><div class="cv">${cov(x.img,x.name)}</div><div class="in"><b>${esc(x.name)}</b><div class="mono">Qty ${x.qty||1}${x.pn?" · "+esc(x.pn):""}</div></div><div class="acts"><button class="btn ghost" data-a="editO" data-id="${x.id}">Edit</button><button class="btn danger" data-a="delO" data-id="${x.id}">Delete</button></div></div>`).join("")||empty("No tools yet.")}</div>
+ <div class="sec"><h2>Maintenance steps</h2><button class="btn" data-a="addS">+ Add step</button></div>
+ ${t.steps.map(st).join("")||empty("No steps yet.")}`;
+}
+function runV(e,t){
+ if(!R||R.t!=t.id)R={t:t.id,placed:{},i:-1};
+ const n=t.steps.length,s=t.steps[R.i]||{tools:[]},miss=t.tools.filter(x=>!R.placed[x.id]);
+ const tile=x=>{const used=R.i>=0&&R.i<n&&(s.tools||[]).includes(x.id);let c="",l="Not on table";
+  if(R.placed[x.id]){c="ok";l="On table"}else if(R.i>=0){c=used?"use":"miss";l=used?"In use":"Missing"}
+  return `<button class="tile ${c}${used?" need":""}" data-a="tog" data-id="${x.id}" aria-label="${esc(x.name)}: ${l}"><b>${esc(x.name)}</b><small>${l}</small></button>`};
+ const table=`<aside class="table"><div class="cap">Smart table · simulation mode: tap a tool to simulate the sensor</div><div class="tg">${t.tools.map(tile).join("")}</div></aside>`;
+ const head=`${crumbs(`<a href="#/e/${e.id}">${esc(e.name)}</a>`,`<a href="#/e/${e.id}/t/${t.id}">${esc(t.name)}</a>`,"Guided")}`;
+ let left;
+ if(R.i<0){left=`<div class="pan"><span class="tag">Step 1: tool check</span><h2>Place the tools on the table</h2><p class="hint">Each tool turns green when the table detects it.</p>${miss.length?`<div class="al">${miss.length} missing: ${miss.map(x=>esc(x.name)).join(", ")}</div>`:`<div class="al good">All tools are on the table.</div>`}<div class="row"><button class="btn big" data-a="begin" ${miss.length||!n?"disabled":""}>Start maintenance</button></div></div>`}
+ else if(R.i>=n){left=`<div class="pan"><span class="tag">Complete</span><h2>Maintenance complete</h2><div class="al good">All steps done and all tools returned.</div><div class="row"><a class="btn big" href="#/e/${e.id}/t/${t.id}" style="text-decoration:none">Back to task</a><button class="btn ghost" data-a="restart">Run again</button></div></div>`;app.innerHTML=head+`<div class="run">${left}${table}</div>`;return}
+ else{const last=R.i==n-1,alien=miss.filter(x=>!(s.tools||[]).includes(x.id));
+  left=`<div class="pan"><div class="pb"><i style="width:${Math.round(R.i/n*100)}%"></i></div><span class="tag">Step ${R.i+1} of ${n}</span><h2>${esc(s.title)}</h2><p style="white-space:pre-line">${esc(s.text)}</p>${s.warning?`<div class="warn"><b>Caution:</b> ${esc(s.warning)}</div>`:""}<div class="media">${(s.media||[]).map(mediaEl).join("")}</div>${alien.length?`<div class="al">Tool missing from table: ${alien.map(x=>esc(x.name)).join(", ")}</div>`:""}${last&&miss.length?`<div class="al">Return all tools to the table to finish.</div>`:""}<div class="row"><button class="btn ghost" data-a="prev" ${R.i==0?"":""}>Back</button><button class="btn big" data-a="next" ${last&&miss.length?"disabled":""}>${last?"Finish maintenance":"Next step"}</button></div></div>`}
+ app.innerHTML=head+`<div class="run">${left}${table}</div>`;
+}
+function route(){
+ const p=location.hash.split("/").slice(1),e=find(p[1]);
+ if(p[0]=="e"&&e){const t=p[2]=="t"&&e.tasks.find(x=>x.id==p[3]);if(t)return p[4]=="run"?runV(e,t):taskV(e,t);return eqV(e)}
+ homeV();
+}
+// Hardware hook: window.toolSensor.set(toolId, true|false)
+window.toolSensor={set:(id,v)=>{if(R){R.placed[id]=!!v;route()}}};
+window.addEventListener("hashchange",()=>{route();scrollTo(0,0)});
+load().then(route).catch(x=>app.innerHTML=empty("Could not load data: "+esc(x.message)));
+</script>
+</body>
+</html>
 
